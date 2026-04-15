@@ -286,109 +286,161 @@
     max-width: 560px;
   }
 
-  /* ABOUT */
+ /* ABOUT */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-visual {
+  position: relative;
+}
+
+/* MAIN CARD */
+.about-card {
+  position: relative;   /* ✅ FIXED */
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 28px;
+}
+
+/* MAIN CARD DESIGN */
+.about-card-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: linear-gradient(135deg, #1A1530 0%, #0D0B1A 100%);
+  overflow: hidden;
+}
+
+/* GLOW EFFECT */
+.about-card-main::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,77,77,0.18) 0%, transparent 70%);
+}
+
+.about-pill {
+  display: inline-block;
+  padding: 6px 14px;
+  background: rgba(255,77,77,0.15);
+  border: 1px solid rgba(255,77,77,0.3);
+  border-radius: 100px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 16px;
+}
+
+.about-card-main h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.7rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+
+.about-card-main p {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* FLOAT CARD (15+) */
+.about-card-float {
+  position: absolute;   /* ✅ FIXED */
+  bottom: -10px;
+  right: -10px;
+  width: 180px;
+  background: var(--coral);
+  border-radius: 4px;
+  padding: 20px;
+  z-index: 2;
+}
+
+.about-card-float .num {
+  font-family: 'Syne', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: white;
+  display: block;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.about-card-float p {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.8);
+  font-weight: 500;
+}
+
+/* TEXT SIDE */
+.about-text { position: relative; }
+
+.about-text h2 { margin-bottom: 24px; }
+
+.about-text .section-desc { margin-bottom: 36px; }
+
+.about-checks {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 40px;
+}
+
+.check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--cream);
+}
+
+.check-icon {
+  width: 22px;
+  height: 22px;
+  background: rgba(255,77,77,0.15);
+  border: 1px solid rgba(255,77,77,0.4);
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  margin-top: 2px;
+}
+
+.check-icon::after {
+  content: '✓';
+  font-size: 0.65rem;
+  color: var(--coral);
+  font-weight: 700;
+}
+
+/* MOBILE FIX */
+@media (max-width: 768px) {
   .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
+    grid-template-columns: 1fr;
+    gap: 40px;
   }
-  .about-visual {
-    position: relative;
-    height: 480px;
-  }
-  .about-card {
-    position: absolute;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 28px;
-  }
-  .about-card-main {
-    inset: 0;
-    display: flex; flex-direction: column; justify-content: flex-end;
-    background: linear-gradient(135deg, #1A1530 0%, #0D0B1A 100%);
-    overflow: hidden;
-  }
-  .about-card-main::before {
-    content: '';
-    position: absolute;
-    top: -40px; right: -40px;
-    width: 260px; height: 260px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(255,77,77,0.18) 0%, transparent 70%);
-  }
-  .about-pill {
-    display: inline-block;
-    padding: 6px 14px;
-    background: rgba(255,77,77,0.15);
-    border: 1px solid rgba(255,77,77,0.3);
-    border-radius: 100px;
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--coral);
-    margin-bottom: 16px;
-  }
-  .about-card-main h3 {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.7rem;
-    font-weight: 800;
-    line-height: 1.1;
-    margin-bottom: 12px;
-  }
-  .about-card-main p {
-    font-size: 0.9rem;
-    color: var(--muted);
-    line-height: 1.6;
-  }
+
   .about-card-float {
-    bottom: -10px; right: -10px;
-    width: 180px;
-    background: var(--coral);
+    position: static;
+    margin-top: 20px;
   }
-  .about-card-float .num {
-    font-family: 'Syne', sans-serif;
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: white;
-    display: block;
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-  .about-card-float p {
-    font-size: 0.8rem;
-    color: rgba(255,255,255,0.8);
-    font-weight: 500;
-  }
-  .about-text { position: relative; }
-  .about-text h2 { margin-bottom: 24px; }
-  .about-text .section-desc { margin-bottom: 36px; }
-  .about-checks { display: flex; flex-direction: column; gap: 14px; margin-bottom: 40px; }
-  .check-item {
-    display: flex; align-items: flex-start; gap: 14px;
-    font-size: 0.95rem;
-    line-height: 1.5;
-    color: var(--cream);
-  }
-  .check-icon {
-    width: 22px; height: 22px;
-    background: rgba(255,77,77,0.15);
-    border: 1px solid rgba(255,77,77,0.4);
-    border-radius: 50%;
-    flex-shrink: 0;
-    display: grid; place-items: center;
-    margin-top: 2px;
-  }
-  .check-icon::after {
-    content: '✓';
-    font-size: 0.65rem;
-    color: var(--coral);
-    font-weight: 700;
-  }
+}
 
   /* SERVICES */
   .services-section { background: var(--surface); }
